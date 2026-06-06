@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+// Text truncation
+@mixin line-clamp($n: 1) {
+  @if $n == 1 {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  } @else {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: $n; overflow: hidden;
+  }
+}
+
+// Flex shortcuts
+@mixin flex-center { display: flex; align-items: center; justify-content: center; }
+@mixin flex-between { display: flex; align-items: center; justify-content: space-between; }
+@mixin flex-col { display: flex; flex-direction: column; }
+
+// Card
+@mixin card {
+  background: $bg-card; border-radius: $radius-md; padding: $gap-lg;
+  box-shadow: $shadow-card;
+}
+
+// Fixed bottom bar
+@mixin bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: $gap-sm $page-padding calc(#{$safe-bottom} + #{$gap-sm});
+  background: $bg-card; border-top: 1rpx solid $border;
+  z-index: 999;
+}
+
+// Input field
+@mixin input-field {
+  width: 100%; height: 88rpx; border-radius: $radius-sm; padding: 0 $gap-lg;
+  font-size: $f-base; background: $bg-input; border: 2rpx solid transparent;
+  &:focus { border-color: $primary; background: $bg-card; }
+}
+
+// Button primary
+@mixin btn-primary {
+  width: 100%; height: 88rpx; border-radius: $radius-full;
+  background: linear-gradient(135deg, $primary, $primary-light);
+  color: $t-inverse; font-size: $f-md; font-weight: $w-semibold;
+  border: none; display: flex; align-items: center; justify-content: center;
+  &:active { opacity: 0.85; }
+}
+
+@mixin btn-outline {
+  @include btn-primary;
+  background: $bg-card; color: $primary; border: 2rpx solid $primary;
+}

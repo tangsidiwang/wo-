@@ -1,0 +1,76 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) DEFAULT '',
+    password VARCHAR(200) DEFAULT '',
+    openid VARCHAR(64) DEFAULT '',
+    unionid VARCHAR(64) DEFAULT '',
+    phone VARCHAR(20) DEFAULT '',
+    nickname VARCHAR(50) DEFAULT '',
+    avatar VARCHAR(500) DEFAULT '',
+    bio VARCHAR(200) DEFAULT '',
+    gender TINYINT DEFAULT 0,
+    status TINYINT DEFAULT 1,
+    role VARCHAR(20) DEFAULT 'user',
+    post_count INT DEFAULT 0,
+    like_count INT DEFAULT 0,
+    fans_count INT DEFAULT 0,
+    follow_count INT DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE game_categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    icon VARCHAR(500) DEFAULT '',
+    sort_order INT DEFAULT 0,
+    post_count INT DEFAULT 0,
+    status TINYINT DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    category_id INT DEFAULT 0,
+    title VARCHAR(200) DEFAULT '',
+    content TEXT DEFAULT '',
+    content_text TEXT DEFAULT '',
+    cover_url VARCHAR(500) DEFAULT '',
+    view_count INT DEFAULT 0,
+    like_count INT DEFAULT 0,
+    comment_count INT DEFAULT 0,
+    favorite_count INT DEFAULT 0,
+    is_pinned TINYINT DEFAULT 0,
+    is_essence TINYINT DEFAULT 0,
+    status TINYINT DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deleted_at DATETIME NULL
+);
+
+CREATE TABLE post_images (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT NOT NULL,
+    url VARCHAR(500) DEFAULT '',
+    thumb_url VARCHAR(500) DEFAULT '',
+    width INT DEFAULT 0,
+    height INT DEFAULT 0,
+    sort_order INT DEFAULT 0
+);
+
+CREATE TABLE tags (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30) NOT NULL, post_count INT DEFAULT 0, status TINYINT DEFAULT 1);
+CREATE TABLE post_tags (id BIGINT AUTO_INCREMENT PRIMARY KEY, post_id BIGINT NOT NULL, tag_id INT NOT NULL);
+CREATE TABLE post_likes (id BIGINT AUTO_INCREMENT PRIMARY KEY, user_id BIGINT NOT NULL, post_id BIGINT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE post_favorites (id BIGINT AUTO_INCREMENT PRIMARY KEY, user_id BIGINT NOT NULL, post_id BIGINT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE comments (id BIGINT AUTO_INCREMENT PRIMARY KEY, post_id BIGINT NOT NULL, user_id BIGINT NOT NULL, parent_id BIGINT DEFAULT 0, reply_to_uid BIGINT DEFAULT 0, content TEXT, like_count INT DEFAULT 0, reply_count INT DEFAULT 0, status TINYINT DEFAULT 1, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE comment_likes (id BIGINT AUTO_INCREMENT PRIMARY KEY, user_id BIGINT NOT NULL, comment_id BIGINT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE user_follows (id BIGINT AUTO_INCREMENT PRIMARY KEY, follower_id BIGINT NOT NULL, followee_id BIGINT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE messages (id BIGINT AUTO_INCREMENT PRIMARY KEY, from_uid BIGINT NOT NULL, to_uid BIGINT NOT NULL, content TEXT, is_read TINYINT DEFAULT 0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE notifications (id BIGINT AUTO_INCREMENT PRIMARY KEY, user_id BIGINT NOT NULL, sender_id BIGINT DEFAULT 0, type VARCHAR(30) DEFAULT '', target_type VARCHAR(20) DEFAULT '', target_id BIGINT DEFAULT 0, content VARCHAR(200) DEFAULT '', is_read TINYINT DEFAULT 0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE reports (id BIGINT AUTO_INCREMENT PRIMARY KEY, reporter_id BIGINT NOT NULL, target_type VARCHAR(20) DEFAULT '', target_id BIGINT DEFAULT 0, reason_type VARCHAR(30) DEFAULT '', description VARCHAR(500) DEFAULT '', status TINYINT DEFAULT 1, handler_id BIGINT DEFAULT 0, result VARCHAR(200) DEFAULT '', created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
+
+-- Test data
+INSERT INTO users (id, username, password, nickname) VALUES (1, 'alice', '$2a$10$test', 'Alice');
+INSERT INTO users (id, username, password, nickname) VALUES (2, 'bob', '$2a$10$test', 'Bob');
+INSERT INTO game_categories (id, name) VALUES (1, 'Test Game');

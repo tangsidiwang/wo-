@@ -1,0 +1,9 @@
+package com.wo.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wo.entity.PostImage;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface PostImageMapper extends BaseMapper<PostImage> {
+}

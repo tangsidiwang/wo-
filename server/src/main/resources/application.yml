@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+sa-token:
+  token-name: Authorization
+  timeout: 604800
+  active-timeout: 1800
+  is-concurrent: true
+  is-share: true
+  token-style: tik
+
+springdoc:
+  swagger-ui:
+    path: /doc.html

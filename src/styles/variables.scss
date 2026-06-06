@@ -1,0 +1,69 @@
+// ── 设计系统 ──
+// Primary
+$primary: #5B6AF0;
+$primary-light: #7B8AF8;
+$primary-dark: #4352CC;
+$primary-bg: #F0F2FF;
+
+// Accent
+$accent: #FF6B35;
+$success: #34C759;
+$warning: #FF9500;
+$danger: #FF3B30;
+
+// Text
+$t1: #1A1A2E;
+$t2: #555770;
+$t3: #8E90A6;
+$t4: #C7C9D9;
+$t-inverse: #FFFFFF;
+
+// Backgrounds
+$bg-page: #F5F6FA;
+$bg-card: #FFFFFF;
+$bg-input: #F2F3F7;
+$bg-hover: #EEF0F5;
+
+// Borders
+$border: #E8E9F0;
+$border-light: #F2F3F7;
+
+// Shadows
+$shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+$shadow-card: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+$shadow-float: 0 8rpx 32rpx rgba(0, 0, 0, 0.10);
+
+// Radius
+$radius-xs: 6rpx;
+$radius-sm: 10rpx;
+$radius-md: 16rpx;
+$radius-lg: 24rpx;
+$radius-full: 999rpx;
+
+// Spacing
+$gap-xs: 8rpx;
+$gap-sm: 12rpx;
+$gap-md: 16rpx;
+$gap-lg: 24rpx;
+$gap-xl: 32rpx;
+
+// Font sizes (rpx)
+$f-xs: 20rpx;
+$f-sm: 24rpx;
+$f-base: 28rpx;
+$f-md: 32rpx;
+$f-lg: 36rpx;
+$f-xl: 42rpx;
+$f-xxl: 48rpx;
+
+// Weights
+$w-normal: 400;
+$w-medium: 500;
+$w-semibold: 600;
+$w-bold: 700;
+
+// Layout
+$nav-height: 88rpx;
+$bottom-bar: 100rpx;
+$safe-bottom: env(safe-area-inset-bottom, 0);
+$page-padding: 24rpx;
